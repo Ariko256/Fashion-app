@@ -1,0 +1,138 @@
+import qrcode
+import webbrowser as wb
+from kivy.uix.videoplayer import VideoPlayer
+from kivy.uix.video import Video
+from kivymd.uix.behaviors import FakeRectangularElevationBehavior
+from kivymd.uix.floatlayout import MDFloatLayout
+from kivy.uix.image import AsyncImage
+#:import NoTransition kivy.uix.screenmanager.NoTransition
+
+
+
+class NavBar(FakeRectangularElevationBehavior,MDFloatLayout):
+    pass
+
+
+def on_start(self):
+    data = "https://www.mayoclinic.com"
+    #qr_content = wb.open(data)
+    box = self.root.ids.box
+
+    # qr = qrcode.QRCode(version=1,box_size=15,border=5)
+
+    # qr.add_data(qr_content)
+    # qr.make(fit=True)
+    # img = qr.make_image(fill="black",back_color="white")
+    # img.save("mayo.png")
+
+
+
+######################################################################
+MDScreen:
+            name:'login'
+            BoxLayout:
+                orientation: 'vertical'
+
+                Widget:
+                    size_hint_y:0.1
+
+                TextInput:
+                    hint_text:"search photos"
+                    size_hint:0.75,None 
+                    height:self.minimum_height
+                    multiline:False 
+                    background_color:1,1,1,0.09
+                    pos_hint:{"center_x":.5}
+                    padding:"10dp",
+                
+                # Widget:
+                #     size_hint_y:0.1
+
+                ScrollView:
+                
+                    MDGridLayout:
+                        cols:2
+                        spacing:"10dp"
+                        padding:"6dp",
+                    
+                        
+                        
+                        AsyncImage:
+                            source:"https://source.unsplash.com/350x250/?nature"
+                            
+                        AsyncImage:
+                            source:"https://source.unsplash.com/350x250/?nature,water"
+                        
+                        AsyncImage:
+                            source:"https://source.unsplash.com/350x250/?nature,grass"
+                        
+                        AsyncImage:
+                            source:"https://source.unsplash.com/350x250/?nature,tigers"
+                        
+                        AsyncImage:
+                            source:"https://source.unsplash.com/350x250/?wildlife"
+                            
+                        AsyncImage:
+                            source:"https://source.unsplash.com/350x250/?norway"
+                        
+                        AsyncImage:
+                            source:"https://source.unsplash.com/350x250/?coding"
+                        
+                        AsyncImage:
+                            source:"https://source.unsplash.com/350x250/?hacking"
+                        
+                    #     # Widget:
+        
+        
+            NavBar:
+                pos_hint:{"center_x":.5,"center_y":.08}
+                elevation:10
+                md_bg_color:1,1,1,1
+                size_hint:0.85,0.1
+
+                MDGridLayout:
+                    cols:3
+                    spacing:"25dp"
+                    pos_hint:{"center_x":.5,"center_y":.5}
+                    MDIconButton:
+                        icon:"home"
+                        ripple_scale:0
+                        user_font_size:"30sp"
+                        theme_text_color:"Custom"
+                        text_color:rgba(253,175,177,255)
+                        on_release:
+                            screen_manager.current = "intro"
+                    
+                    MDIconButton:
+                        icon:"download"
+                        ripple_scale:0
+                        user_font_size:"30sp"
+                        theme_text_color:"Custom"
+                        text_color:rgba(253,175,177,255)
+                    
+                    MDIconButton:
+                        icon:"account"
+                        ripple_scale:0
+                        user_font_size:"30sp"
+                        theme_text_color:"Custom"
+                        text_color:rgba(253,175,177,255)
+                            
+        MDScreen:
+            name:"search"     
+            BoxLayout:
+                orientation: 'vertical'
+                MDIconButton:
+                    icon:"arrow-left"
+                    pos_hint:{'center_x':.1,"center_y":.95}
+                    on_release:screen_manager.current = "intro"
+                ScrollView:
+                    MDGridLayout:
+                        cols:2
+                        id:images_search
+                        spacing:"10dp"
+                        padding:"8dp",
+                          
+
+
+
+
