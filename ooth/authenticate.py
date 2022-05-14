@@ -26,11 +26,8 @@ class Auth(object):
         self.auth = self.firebase.auth()
 
     def send(self):
-        #self.auth.send_password_reset_email("arikojahn256@gmail.com")
-        #self.auth.send_email_verification('J2A9LmjvxQgGJp3JBV6RnwbKVWD3')
-
         print(self.auth.current_user)
 
 
 
-#Auth().send()
+
