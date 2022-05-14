@@ -1,0 +1,518 @@
+#:import NoTransition  kivy.uix.screenmanager.NoTransition
+
+ScreenManager:
+    id:screen_manager
+    transition:NoTransition()
+
+    MDScreen:
+        name:"splash"
+        Carousel:
+            FitImage:
+                id:fitimage0
+                source:""
+
+            FitImage:
+                id:fitimage1
+                source:""
+
+            FitImage:
+                id:fitimage2
+                source:""
+
+        MDFloatLayout:
+            orientation:"vertical"
+
+            MDCard:
+                size_hint:1,None
+                height:"300dp"
+                radius:[18,18,0,0]
+                pos_hint:{'center_x':.5,'y':.0}
+                padding:"15dp",
+                ripple_scale:1.3
+                opacity:1
+
+                MDBoxLayout:
+                    orientation:"vertical"
+
+                    MDLabel:
+                        text:"Fashion World"
+                        bold:True
+                        size_hint_y:None
+                        height:self.texture_size[1]
+                        pos_hint:{"center_x":.5}
+                        font_size:"25sp"
+
+                    Widget:
+                        size_hint_y:0.25
+
+                    MDLabel:
+                        text:"Get Inspired"
+                        size_hint_y:None
+                        height:self.texture_size[1]
+                        pos_hint:{"center_x":.5}
+                        font_size:"18sp"
+
+                    Widget:
+                        size_hint_y:0.25
+
+                    MDLabel:
+                        text:"I remember when I just started my design career 20 years ago - mentoring was absolutely not popular. Every day guys write to become their mentor, and I would love to, but for now"
+                        size_hint_y:None
+                        height:self.texture_size[1]
+                        pos_hint:{"center_x":.5}
+                        font_size:"13sp"
+                    Widget:
+
+                    Widget:
+                        size_hint_y:0.35
+
+                    MDLabel:
+                        text:"____________________________"
+                        pos_hint:{"center_x":.5}
+
+                    MDGridLayout:
+                        cols:2
+                        spacing:"13dp"
+                        #padding:"8dp",
+
+                        MDFillRoundFlatIconButton:
+                            text:f"Like Us"
+                            icon:"facebook"
+                            pos_hint: {'center_x':.5 }
+                            md_bg_color:"#005ce6"
+
+                        MDFillRoundFlatIconButton:
+                            text:f"Rating"
+                            icon:"star"
+                            pos_hint: {'center_x':.5 }
+                            md_bg_color:"#000000"
+                    Widget:
+                        size_hint_y:0.35
+
+
+            MDIconButton:
+                icon:"arrow-right"
+                pos_hint: {'center_x':.85,"y":0.9 }
+                md_bg_color:"#0d0d0d"
+                theme_text_color:"Custom"
+                text_color:"#ffffff"
+                elevation:10
+
+                on_release:
+                    screen_manager.current = "login"
+                    screen_manager.transition.direction = "left"
+
+            Widget:
+
+    MDScreen:
+        name:"login"
+        BoxLayout: 
+            orientation: 'vertical'
+            
+            Widget:
+                size_hint_y:0.3
+            MDLabel:
+                text:"Login"
+                size_hint_y:None 
+                height:self.texture_size[1]
+                font_size:20
+                halign:"center"
+            Widget:
+                size_hint_y:0.05
+            
+            
+            TextInput:
+                padding:"13dp",
+                id:email
+                radius:[10]
+                pos_hint:{"center_x":.5}
+                size_hint:None,None
+                width:"250dp" 
+                height:self.minimum_height
+                cursor_width:"2.5sp"
+                background_color:0,0,0,0.06
+                hint_text:"Email"
+                multiline:False
+            
+            Widget:
+                size_hint_y:0.05
+            
+            TextInput:
+                padding:"13dp",
+                id:password
+                radius:[10]
+                pos_hint:{"center_x":.5}
+                size_hint:None,None 
+                width:"250dp"
+                height:self.minimum_height
+                cursor_width:"2.5sp"
+                background_color:0,0,0,0.06
+                hint_text:"Password"
+                multiline:False
+                password:True 
+                mask:"."
+            
+            Widget:
+                size_hint_y:0.05
+            
+            
+            MDRaisedButton:
+                text:f"{' '*int(10)}Login{' '*int(10)}"
+                pos_hint:{'center_x':.5}
+                md_bg_color:rgba(250,100,120,255)
+                on_release:app.Login_user()
+                
+            
+            Widget:
+                size_hint_y:0.2
+            
+            MDLabel:
+                text:"_________ have no account _________"
+                size_hint_y:None 
+                height:self.texture_size[1]
+                font_size:14
+                halign:"center"
+            Widget:
+                size_hint_y:0.05
+            
+            MDFillRoundFlatButton:
+                text:f"{' '*int(15)}Create One{' '*int(15)}"
+                md_bg_color:rgba(0,0,0,150)
+                pos_hint:{"center_x":.5}
+                ripple_scale:1
+                on_release: screen_manager.current = "intro"
+            
+            Widget:
+                size_hint_y:0.08
+            MDFlatButton:
+                text:"Terms and conditions"
+                font_size:12
+                halign:"center"
+                pos_hint:{"center_x":.5}
+            Widget:
+                size_hint_y:0.08
+            
+            MDFlatButton:
+                text:"forgot password!"
+                font_size:12
+                pos_hint:{"center_x":.5}
+               
+            
+            
+            Widget:
+            MDLabel:
+                text:"_____________________________________"
+                size_hint_y:None 
+                height:self.texture_size[1]
+                font_size:13
+                halign:"center"
+            Widget:
+                size_hint_y:0.08
+            MDLabel:
+                text:"By continuing you agree to our terms and conditions!"
+                size_hint_y:0.1
+                font_size:12
+                halign:"center"
+            Widget:
+                size_hint_y:0.08
+
+    
+    MDScreen:
+        name:"intro"
+        
+        BoxLayout:
+            orientation:'vertical'
+            # Widget:
+            #     size_hint_y:0.1
+            MDIconButton:
+                icon:"arrow-left"
+                pos_hint:{'center_x':.1,'center_y':.95}
+                size_hint_x: None
+                on_release:screen_manager.current = "login"
+             
+            Widget:
+                size_hint_y:0.06
+
+            MDLabel:
+                text:"Welcome to FashionWorld"
+                halign:"center"
+                bold:True
+                size_hint_y:None
+                height:self.texture_size[1]
+            
+            Widget:
+                size_hint_y:0.06
+
+            
+            Carousel:
+                id:carousel 
+                loop:True
+                
+                MDGridLayout:
+                    cols:2
+                    spacing:"13dp"
+                    padding:"13dp"
+
+                    MDCard:
+                        size_hint:0.4,None 
+                        height:"150dp"
+                        elevation:10
+                        FitImage:
+                            source:"https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjF8fGZhc2hpb258ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
+
+                    
+                    MDCard:
+                        size_hint:0.4,None 
+                        height:"150dp"
+                        elevation:10
+                        FitImage:
+                            source:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzl8fGZhc2hpb258ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
+
+                
+                MDGridLayout:
+                    cols:2
+                    spacing:"13dp"
+                    padding:"13dp"
+
+                    MDCard:
+                        size_hint:0.4,None 
+                        height:"150dp"
+                        elevation:10
+                        FitImage:
+                            source:"https://images.unsplash.com/photo-1500643752441-4dc90cda350a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzB8fGZhc2hpb258ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
+
+                    
+                    MDCard:
+                        size_hint:0.4,None 
+                        height:"150dp"
+                        elevation:10
+                        FitImage:
+                            source:"https://images.unsplash.com/photo-1483181957632-8bda974cbc91?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDd8fGZhc2hpb258ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
+
+
+                MDGridLayout:
+                    cols:2
+                    spacing:"13dp"
+                    padding:"13dp"
+
+                    MDCard:
+                        size_hint:0.4,None 
+                        height:"150dp"
+                        elevation:10
+                        FitImage:
+                            source:"https://images.unsplash.com/photo-1558769132-cb1aea458c5e?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDZ8fGZhc2hpb258ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
+
+                    
+                    MDCard:
+                        size_hint:0.4,None 
+                        height:"150dp"
+                        elevation:10
+                        FitImage:
+                            source:"https://images.unsplash.com/photo-1551803091-e20673f15770?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDV8fGZhc2hpb258ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
+
+
+                MDGridLayout:
+                    cols:2
+                    spacing:"13dp"
+                    padding:"13dp"
+
+                    MDCard:
+                        size_hint:0.4,None 
+                        height:"150dp"
+                        elevation:10
+                        FitImage:
+                            source:"https://images.unsplash.com/photo-1550402537-6f7b6189b3b6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTR8fGZhc2hpb258ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
+
+                    
+                    MDCard:
+                        size_hint:0.4,None 
+                        height:"150dp"
+                        elevation:10
+                        FitImage:
+                            source:"https://images.unsplash.com/photo-1532453288672-3a27e9be9efd?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTZ8fGZhc2hpb258ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60"
+
+
+            BoxLayout:
+                orientation: 'vertical'
+
+                MDFillRoundFlatIconButton:
+                    text:f"{' '*int(8)}SignUp with google{' '*int(8)}"
+                    icon:"google"
+                    pos_hint: {'center_x':.5 }
+                    md_bg_color:(204/255, 0/255, 82/255,1)
+                Widget:
+                    size_hint_y:0.1
+
+                MDFillRoundFlatIconButton:
+                    text:f"{' '*int(8)}SignUp with twitter{' '*int(8)}"
+                    icon:"twitter"
+                    pos_hint: {'center_x':.5 }
+                    md_bg_color:(0/255, 92/255, 230/255,1)
+                Widget:
+                    size_hint_y:0.1
+                
+                MDFillRoundFlatIconButton:
+                    text:f"{' '*int(8)}SignUp with github{' '*int(8)}"
+                    icon:"github"
+                    pos_hint: {'center_x':.5 }
+                    md_bg_color:(77/255, 77/255, 77/255,1)
+                    
+                Widget:
+                    size_hint_y:0.1
+                
+                MDLabel:
+                    text:"______ or ______"
+                    size_hint_y:None 
+                    height:self.texture_size[1]
+                    pos_hint:{'center_x':.5}
+                    halign:"center"
+                
+                Widget:
+                    size_hint_y:0.1
+                
+
+                MDFlatButton:
+                    text:"Create Account"
+                    pos_hint:{'center_x':.5}
+                    on_release:screen_manager.current = "create_one"
+                
+                Widget:
+                    size_hint_y:0.1
+
+    MDScreen:
+        name:"create_one"
+        BoxLayout: 
+            orientation: 'vertical'
+            Widget:
+                size_hint_y:0.3
+            MDLabel:
+                text:"SighnUp"
+                size_hint_y:None 
+                height:self.texture_size[1]
+                font_size:20
+                halign:"center"
+            Widget:
+                size_hint_y:0.05
+            
+            
+            TextInput:
+                padding:"13dp",
+                id:email_sighnup
+                radius:[10]
+                pos_hint:{"center_x":.5}
+                size_hint:None,None
+                width:"250dp" 
+                height:self.minimum_height
+                cursor_width:"2.5sp"
+                background_color:0,0,0,0.06
+                hint_text:"Email"
+                multiline:False
+            
+            Widget:
+                size_hint_y:0.05
+            
+            TextInput:
+                padding:"13dp",
+                id:password_sighnup
+                radius:[10]
+                pos_hint:{"center_x":.5}
+                size_hint:None,None 
+                width:"250dp"
+                height:self.minimum_height
+                cursor_width:"2.5sp"
+                background_color:0,0,0,0.06
+                hint_text:"Password"
+                multiline:False
+                password:True 
+                mask:"."
+            
+            Widget:
+                size_hint_y:0.05
+            
+            TextInput:
+                padding:"13dp",
+                id:confirmpassword
+                radius:[10]
+                pos_hint:{"center_x":.5}
+                size_hint:None,None 
+                width:"250dp"
+                height:self.minimum_height
+                cursor_width:"2.5sp"
+                background_color:0,0,0,0.06
+                hint_text:"Confirm Password"
+                multiline:False
+                password:True 
+                mask:"."
+            
+            Widget:
+                size_hint_y:0.05
+            
+            MDRaisedButton:
+                text:f"{' '*int(15)}Signup{' '*int(15)}"
+                pos_hint:{'center_x':.5}
+                md_bg_color:rgba(0,0,0,150)
+                on_release:app.Authenticate()
+            
+            Widget:
+                size_hint_y:0.2
+            
+            MDLabel:
+                text:"_________ have an account _________"
+                size_hint_y:None 
+                height:self.texture_size[1]
+                font_size:14
+                halign:"center"
+            Widget:
+                size_hint_y:0.05
+            
+            MDFillRoundFlatButton:
+                text:f"{' '*int(15)}Login{' '*int(15)}"
+                md_bg_color:rgba(250,100,120,255)
+                pos_hint:{"center_x":.5}
+                ripple_scale:1
+                on_release: screen_manager.current = "login"
+            
+            Widget:
+                size_hint_y:0.08
+            MDFlatButton:
+                text:"Terms and conditions"
+                font_size:12
+                halign:"center"
+                pos_hint:{"center_x":.5}
+            Widget:
+                size_hint_y:0.08
+            
+            
+            Widget:
+            MDLabel:
+                text:"_____________________________________"
+                size_hint_y:None 
+                height:self.texture_size[1]
+                font_size:13
+                halign:"center"
+            Widget:
+                size_hint_y:0.08
+            MDLabel:
+                text:"By continuing you agree to our terms and conditions!"
+                size_hint_y:0.1
+                font_size:12
+                halign:"center"
+            Widget:
+                size_hint_y:0.08
+
+    MDScreen:
+        name:"home_screen"
+        MDBoxLayout:
+            orientation:"vertical"
+            MDToolbar:
+                title:'fashion'
+                md_bg_color:rgba(255, 26, 117,255)
+                left_action_items:[['menu',lambda x:None]]
+
+
+
+
+            Widget:
+
+    
+    
